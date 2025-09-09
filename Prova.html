@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+
+
+<title>Flexible parametric models for dose-response analysis in miRNAs expression</title>
+
+
+
+
+
+
+<style>
+@page {
+size: 23.4in 33.1in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0;
+font-size: 21px;
+width: 23.4in;
+height: 33.1in;
+padding: 0;
+text-align: justify;
+font-family: Rasa;
+}
+.poster_wrap {
+width: 23.4in;
+height: 33.1in;
+padding: 0cm;
+}
+.title_container {
+width: 100%;
+height: 15%;
+overflow: hidden;
+background-color: #2F4858;
+border: 0 solid #2F4858
+;
+}
+.logo_left {
+float: left;
+width: 10%;
+height: 100%;
+background-color: #2F4858;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.logo_right {
+float: right;
+width: 10%;
+height: 100%;
+background-color: #2F4858;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.poster_title {
+text-align: center;
+position: relative;
+float: left;
+width: 80%;
+height: 100%;
+color: #F2EADF;
+top: 50%;
+transform: translateY(-50%);
+-webkit-transform: translateY(-50%);
+}
+#title {
+font-family: Rasa;
+}
+/* unvisited link */
+a:link {
+color: #008080;
+text-decoration: none;
+}
+.mybreak {
+  break-before: column;
+}
+/* visited link */
+a:visited {
+color: #008080;
+text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+color: #008080;
+text-decoration: none;
+}
+
+/* selected link */
+a:active {
+color: #008080;
+text-decoration: none;
+}
+.poster_body {
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+-webkit-column-rule-width: 1mm;
+-moz-column-rule-width: 1mm;
+column-rule-width: 1mm;
+-webkit-column-rule-style: dashed;
+-moz-column-rule-style: dashed;
+column-rule-style: dashed;
+-webkit-column-rule-color: #2F4858;
+-moz-column-rule-color: #2F4858;
+column-rule-color: #2F4858;
+column-gap: 1em;
+padding-left: 0.5em;
+padding-right: 0.5em;
+height: 100%;
+color: #2F4858
+background-color: #F2EADF;
+}
+.poster_title h1 {
+font-size: 75pt;
+margin: 0;
+border: 0;
+font-weight: normal;
+}
+.poster_body_wrap{
+width: 23.4in;
+height: calc(100% - 17%);
+padding-top: calc(33.1in * 0.01);
+padding-bottom: calc(33.1in * 0.01);
+background-color: #F2EADF;
+}
+.poster_title h3 {
+color: #F2EADF;
+font-size: 30pt;
+margin: 0;
+border: 0;
+font-weight: normal;
+}
+.poster_title h3 > sup {
+  font-size: 35pt;
+  margin-left: 0.02em;
+}
+.poster_title h5 {
+color: #F2EADF;
+font-size: ;
+margin: 0;
+border: 0;
+font-weight: normal;
+}
+img {
+margin-top: 0;
+margin-bottom: 0;
+}
+.section {
+  padding: 0.2em;
+}
+.poster_body h1 {
+text-align: center;
+color: #2F4858;
+font-size: 24pt;
+border: 1mm solid #2F4858;
+background-color: #F2EADF;
+border-radius: 4mm 0mm;
+margin-top: 2mm;
+margin-bottom: 2mm;
+font-weight: normal;
+}
+.poster_body h2 {
+color: #000000;
+font-size: 40pt;
+padding-left: 4mm;
+font-weight: normal;
+}
+.span {
+width: 200%;
+}
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #B9975B 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #B9975B24;
+color: #B9975B;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+.caption {
+font-size: 20pt;
+}
+.table caption {
+font-size: 20pt;
+padding-bottom: 3mm;
+
+}
+code {
+font-size: 1em;
+font-family: monospace;
+background-color: #B9975B24;
+color: #2F4858;
+padding: 1.2mm;
+border-radius: 2mm;
+}
+.poster_title code {
+font-size: 1em;
+}
+table {
+font-size: 40px;
+margin: auto;
+border-top: 3px solid #666;
+border-bottom: 3px solid #666;
+}
+table thead th {
+border-bottom: 3px solid #ddd;
+}
+td {
+padding: 8px;
+}
+th {
+padding: 15px;
+}
+caption {
+margin-bottom: 10px;
+}
+.poster_body p {
+margin-right: 4mm;
+margin-left: 4mm;
+margin-top: 6mm;
+margin-bottom: 10mm;
+color: #2F4858
+}
+.poster_body ol {
+margin-right: 4mm;
+margin-left: 4mm;
+}
+#ul {
+margin-right: 4mm;
+margin-left: 4mm;
+}
+.references p {
+font-size: 20pt;
+}
+.orcid img {
+  width: 1em;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+<div class="title_container">
+<!-- Left Logo  -->
+<div class="logo_left">
+<img src=Unimi-logo.png style="width: 80%">
+</div>
+<!-- Poster Title -->
+<div class= "poster_title">
+<h1 id="title">Flexible parametric models for dose-response analysis in miRNAs expression</h1>
+<h3 id="author">Giacomo Biganzoli<sup>1, 2</sup>, Giuseppe Marano<sup>1</sup>, Chiara Favero<sup>3</sup>, Valentina Bollati<sup>3</sup>, Joel Schwartz<sup>2</sup>, Patrizia Boracchi<sup>1</sup></h3>
+<h5 id="affiliation"><sup>1</sup> Department of Biomedical and Clinical Sciences, University of Milan, Milan, Italy; <sup>2</sup> Department of Environmental Health, Harvard T.H.Chan School of Public Health, Boston, MA; <sup>3</sup> Department of Clinical and Community Health Sciences, University of Milan, Milan, Italy</h5>
+</div>
+<!-- Right Logo  -->
+<div class="logo_right">
+<img src=SM.png style="width: 80%">
+</div>
+</div>
+
+<div class='poster_body_wrap'>
+<div class='poster_body'>
+<style type="text/css">
+/* Target the figure caption class */
+p.caption {
+  font-size: 18px; /* Or 12px, 0.9em, etc. */
+  color: #555555;   /* You can change color too! */
+
+}
+
+#refs {
+  font-size: 10pt;
+}
+
+a.footnote-ref {
+  font-size: 0.1em !important;
+}
+
+p {
+  margin-top: 18px !important;
+  margin-bottom: 18px !important;
+}
+
+h2 {
+  margin-top: 2px !important;
+  margin-bottom: 2px!important;
+  font-size: 20pt !important;
+}
+</style>
+<div id="dose-response-analysis-of-mirna-expression" class="section level1 my-callout">
+<h1>Dose-response analysis of miRNA expression</h1>
+<p>Analyzing how the expression of microRNAs (miRNAs) changes in response to varying levels of air pollution is a critical tool for environmental health. This approach allows scientists and public health officials to understand the molecular underpinnings of how pollutants impact human health. Just as with a drug, the “dose” of a pollutant can determine the severity and nature of the biological response.</p>
+</div>
+<div id="motivating-example" class="section level1">
+<h1>Motivating example</h1>
+<p>The data we will use comes from the SPHERE study (“Susceptibility to Particle Health Effects, miRNAs and Exosomes”), a cross-sectional study that also investigated the effects of exposure to particulate matter with an aerodynamic diameter ≤10 μm (PM10) on extracellular vescicles (EVs) and their miRNA content in overweight and obese individuals. In particular, the research of <span class="citation">Pergoli et al. (2017)</span> aimed to determine if short-term PM10 exposure was associated with changes in fibrinogen levels, the release of EVs, and the miRNA content within those EVs. The study also explored how these molecular changes might be linked to increased coagulation and cardiovascular disease risk.</p>
+<p>In the study, <code>hsa-let-7c-5p</code> was one of nine EVs-packaged miRNAs that were found to be down-regulated in response to short-term exposure to PM10. We will focus our attention to that specific miRNA to explore the distributional changes associated to PM10 exposure.</p>
+</div>
+<div id="non-normally-distributed-outcomes" class="section level1">
+<h1>Non-normally distributed outcomes</h1>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="Prova_files/figure-html/unnamed-chunk-3-1.png" alt="Different scenarios that describe the impact of the exposure on the distribution of an outcome" width="672" />
+<p class="caption">
+Figure 1: Different scenarios that describe the impact of the exposure on the distribution of an outcome
+</p>
+</div>
+<p>Ordinary Least Squares (OLS) and Generalized Linear Models (GLMs) are primarily designed to model the relationship between an exposure and the conditional expectation of an outcome variable. For example, a linear model expressed as<code>E[expression | PM10] = β₀ + β₁ * PM10</code> specifically quantifies how the average level of miRNA expression changes with a unit increase in PM10 exposure. This approach is most effective when the predictor induces a simple location shift in the outcome’s distribution, a scenario often assumed under normality (as depicted in Figure 1, panel A).</p>
+<p>However, higher exposure levels could lead to both a lower location of the distribution and reduced variability around that location (Figure 1, panel B). In other cases, an exposure might only impact the variance while leaving the location unchanged (Figure 1, panel C). A model focused solely on the location would erroneously conclude there is no association in the latter case. Furthermore, if an outcome’s distribution is bimodal (or multimodal) its mean could fall in a low-density region between the peaks. Modeling this single, unrepresentative value would completely obscure the underlying nature of the relationship.</p>
+</div>
+<div id="modeling-the-full-conditional-distribution-of-the-outcome" class="section level1">
+<h1>Modeling the full (conditional) distribution of the outcome</h1>
+<p>We propose a framework for analyzing the effect of exposure factors like air-pollution on the full distribution of an outcome. We exploit flexible parametric models that adopt splines to flexibly and robustly estimate two fundamental functions that describe a distribution, the cumulative distribution function (<span class="math inline">\(\small F(y)\)</span>, CDF) and the Probability Density Function ( <span class="math inline">\(\small f(y)\)</span>, PDF). We choose Highest Density Regions (HDRs) <span class="citation">(Hyndman 1996)</span> to easily communicate the association between exposure and outcome, translating the possibly complex model results into easily interpretable probabilistic statements.</p>
+<p>The flexible models adopted to estimate <span class="math inline">\(\small f(y)\)</span> and <span class="math inline">\(\small F(y)\)</span> are of the form:</p>
+<p><span class="math inline">\(\small g[Y] = \beta X + \sum_{k=1}^{K} (\gamma_k + \delta_k X) B_k(y)\)</span></p>
+<p>where <span class="math inline">\(\small Y\)</span> is either the hazard function <span class="math inline">\(\small h(y)\)</span> or the cumulative distribution function <span class="math inline">\(\small F(y)\)</span> of the outcome variable; <span class="math inline">\(\small \beta X\)</span> is the effect associated to the exposure covariate on <span class="math inline">\(\small Y\)</span>; <span class="math inline">\(\small B_k(y)\)</span> are the spline bases to smooth the baseline <span class="math inline">\(\small Y\)</span>; <span class="math inline">\(\small \gamma_k\)</span> are the coefficients associated to the spline bases; <span class="math inline">\(\small \delta_kX\)</span> are the possible interaction effects between the baseline function and the exposure covariate <span class="math inline">\(\small X\)</span> on the CDF; <span class="math inline">\(\small g(\cdot)\)</span> is a suitable link function that links the response variable <span class="math inline">\(\small Y\)</span> to the linear predictor.</p>
+<p>For <span class="math inline">\(\small F(y)\)</span> we use jackknife pseudo-observations (PSEUDO) computed on the empirical CDF <span class="math inline">\(\small \hat{\theta}_i(y) = n \cdot \hat{F}(y) - (n-1) \cdot \hat{F}_{-i}(y)\)</span>. We obtain <span class="math inline">\(\small f(y)\)</span> by the direct relationship <span class="math inline">\(\small f(y|X) = \frac{d}{dy} F(y|X)\)</span>.</p>
+<p>From the hazard, we obtain <span class="math inline">\(\small f(y|X)\)</span> with the relationship <span class="math inline">\(\small f(y|X) = h(y|X) \exp\left(-\int_{0}^{t} h(u|X) \, du\right)\)</span>, and <span class="math inline">\(\small F(y|X)\)</span> with the relationship <span class="math inline">\(\small F(y|X) = 1- \exp\left(-\int_{0}^{t} h(u|X) \, du\right)\)</span>.</p>
+</div>
+<div id="they-are-really-flexible-a-classical-example" class="section level1">
+<h1>They are really flexible! A classical example</h1>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="Prova_files/figure-html/unnamed-chunk-5-1.png" alt="Estimates of the PDF and CDF adopting the PWE and the PSEUDO models. The estimates are compared with the ones from a Kernel Density Estimator and the empirical CDF." width="672" />
+<p class="caption">
+Figure 2: Estimates of the PDF and CDF adopting the PWE and the PSEUDO models. The estimates are compared with the ones from a Kernel Density Estimator and the empirical CDF.
+</p>
+</div>
+<p>A classic example of density estimation, featured on Wikipedia, uses a Kernel Density Estimator (KDE) to model the glucose distribution in the Indian PIMA population based on diabetes status. Our method matches the flexibility of KDE while adding the significant advantage of accounting for continuous covariates. In Figure 2, the KDE estimates of <span class="math inline">\(\small f(\text{glu}|\text{Diabetes})\)</span> (white thin lines) are compared with the ones from one method, by performing smooth estimation either of the hazard with a Piecewise exponential model (PWE) <span class="citation">(Laird and Olivier 1981)</span> -panel A- or of the cumulative distribution function (PSEUDO) <span class="citation">(Andersen 2003)</span> -panel C. In panel B and D we show that the estimates of the CDF <span class="math inline">\(\small F(\text{glu}|\text{Diabetes})\)</span> from both the modeling frameworks match well the empirical ones.</p>
+</div>
+<div id="interpretable-statements-about-the-outcome" class="section level1">
+<h1>Interpretable statements about the outcome</h1>
+<p>The challenge with using flexible models lies in interpretation. Standard GLM coefficients, do not provide a sensible interpretation in this context (e.g., as hazard/cumulative distribution ratios or differences).</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="Prova_files/figure-html/unnamed-chunk-7-1.png" alt="Different propability intervals to describe a distribution" width="672" />
+<p class="caption">
+Figure 3: Different propability intervals to describe a distribution
+</p>
+</div>
+<p>On the other hand, relying solely on a visual plot of the density function provides qualitative insight but no quantitative measure of the effect. To address this, we use HDRs - the smallest regions containing a specific probability mass-, which translate the visual changes in a distribution’s shape into formal and interpretable probability statements about the outcome. In Figure 3C, the 75% Highest Density Region is the best suited, over intervals showed in panel A and B, for summarizing a right skewed distribution, as it contains the (75%) most representative values of it.</p>
+<p>Two algorithms identify a distribution’s Highest Density Region. The first method (Up-down approach) operates on the probability density function to find all areas exceeding a density threshold, a process that can yield multiple intervals and is ideal for multimodal distributions. The second algorithm (Right-left approach) uses the CDF to solve for the single shortest interval containing the target probability, making it a more direct approach for unimodal distributions. That’s why we are interested in estimate both the PDF/CDF.</p>
+</div>
+<div id="demonstration" class="section level1">
+<h1>Demonstration</h1>
+<p>We considered a PWE model to model the impact of short-term PM10 exposure on <code>hsa-let-7c-5p</code> expression. We specified a non-linear effect of PM10, modeled with a restricted cubic spline, on the baseline hazard function. The baseline hazard was modeled with natural splines and 3 interior knots, chosen with the Bayesian Information Criterion. From the hazard estimates we obtained the conditional CDF (Figure 4, top panel) and PDF (Figure 4, bottom panel) using their relationship with the hazard function. We used a bootstrap approach to compute 95% Simultaneous Confidence Bands <span class="citation">(Montiel Olea and Plagborg-Møller 2018)</span> and to display the variability around the function estimates.</p>
+<p>From the top panel, we have evidence of a substantial difference between the CDFs, conditional to distinct exposure levels of PM10. Interestingly, the corresponding PDFs in the bottom panel show that the effect is realized more on “accumulation” of the probability mass around the peak instead than on the shift of the location of the distribution, like a OLS would model</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="Prova_files/figure-html/unnamed-chunk-8-1.png" alt="Results adopting the PWE model to model the CDF and PDF conditional on levels of exposure to PM10. Bootstrapped 95% Simultaneous confidence bands show the variability around the estimates." width="672" />
+<p class="caption">
+Figure 4: Results adopting the PWE model to model the CDF and PDF conditional on levels of exposure to PM10. Bootstrapped 95% Simultaneous confidence bands show the variability around the estimates.
+</p>
+</div>
+<p>We then computed the 25%, 50%, 75% and 90% HDRs, conditional on the values of PM10 exposure. For example, the 25% most representative values of expression of the miRNA lie between 0.18 and 0.29 at an exposure of <span class="math inline">\(\small 10 \mu g/m^3\)</span>, (<span class="math inline">\(\small\text{25% HDR}_{PM10=10} = [0.18, 0.29]\)</span>) and between 0.16 and 0.23 at an exposure of <span class="math inline">\(\small50 \mu g/m^3\)</span> (<span class="math inline">\(\small\text{25% HDR}_{PM10=50} = [16, 23]\)</span>). The 75% most representative expression values lie between 0.10 and 0.57 at an exposure of <span class="math inline">\(\small10 \mu g/m^3\)</span> and between 0.8 and 0.37 at an exposure of <span class="math inline">\(\small50 \mu g/m^3\)</span> (<span class="math inline">\(\small \text{75% HDR}_{PM10=10} = [.10, 0.57]\)</span> vs <span class="math inline">\(\small\text{75% HDR}_{PM10=50} = [0.8, 0.37]\)</span>).</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="Prova_files/figure-html/unnamed-chunk-9-1.png" alt="Various HDR intervals to summarize the conditonal distribution modeled with the flexible parametric models. The right panel shows the results of an algorithm based on the CDF, the left panel the ones of an algorithm based on PDF." width="672" />
+<p class="caption">
+Figure 5: Various HDR intervals to summarize the conditonal distribution modeled with the flexible parametric models. The right panel shows the results of an algorithm based on the CDF, the left panel the ones of an algorithm based on PDF.
+</p>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>Flexible parametric models have been widely adopted for modeling functions like the CDF and the hazard function and for describing the effect of an exposure on the entire distribution of an outcome. However, the interpretation of their outputs is hampered, especially when baseline-varying effects are modeled and the outcome of interest is not a ‘time-to-event’. Our methods exploit the flexibility of these models but translate their outputs into interpretable probabilistic statements about the most representative values of the conditional distribution of the outcome by using HDRs. We believe this approach might be useful to describe exposure-outcome relationships that do not fit the rigid distributions of classical parametric models, which is often the case for miRNA expression data, as demonstrated in the application above.</p>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-andersen2003" class="csl-entry">
+Andersen, P. K. 2003. <span>“Generalised Linear Models for Correlated Pseudo-Observations, with Applications to Multi-State Models.”</span> <em>Biometrika</em> 90 (1): 15–27. <a href="https://doi.org/10.1093/biomet/90.1.15">https://doi.org/10.1093/biomet/90.1.15</a>.
+</div>
+<div id="ref-hyndman1996" class="csl-entry">
+Hyndman, Rob J. 1996. <span>“Computing and Graphing Highest Density Regions.”</span> <em>The American Statistician</em> 50 (2): 120–26. <a href="https://doi.org/10.1080/00031305.1996.10474359">https://doi.org/10.1080/00031305.1996.10474359</a>.
+</div>
+<div id="ref-laird1981" class="csl-entry">
+Laird, Nan, and Donald Olivier. 1981. <span>“Covariance Analysis of Censored Survival Data Using Log-Linear Analysis Techniques.”</span> <em>Journal of the American Statistical Association</em> 76 (374): 231–40. <a href="https://doi.org/10.1080/01621459.1981.10477634">https://doi.org/10.1080/01621459.1981.10477634</a>.
+</div>
+<div id="ref-montielolea2018" class="csl-entry">
+Montiel Olea, José Luis, and Mikkel Plagborg-Møller. 2018. <span>“Simultaneous Confidence Bands: Theory, Implementation, and an Application to SVARs.”</span> <em>Journal of Applied Econometrics</em> 34 (1): 1–17. <a href="https://doi.org/10.1002/jae.2656">https://doi.org/10.1002/jae.2656</a>.
+</div>
+<div id="ref-pergoli2017" class="csl-entry">
+Pergoli, Laura, Laura Cantone, Chiara Favero, Laura Angelici, Simona Iodice, Eva Pinatel, Mirjam Hoxha, et al. 2017. <span>“Extracellular Vesicle-Packaged miRNA Release After Short-Term Exposure to Particulate Matter Is Associated with Increased Coagulation.”</span> <em>Particle and Fibre Toxicology</em> 14 (1). <a href="https://doi.org/10.1186/s12989-017-0214-4">https://doi.org/10.1186/s12989-017-0214-4</a>.
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>
