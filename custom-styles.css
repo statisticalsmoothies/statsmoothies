@@ -1,0 +1,28 @@
+.reveal .slides {
+  font-size: 24px; /* Reduced from default for smaller text */
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: #2c3e50; /* A formal, dark slate blue for headings */
+  text-transform: none; /* Optional: for a slightly more formal look */
+}
+
+.my-callout {
+  font-size: 40px;
+  color: #2c3e50;
+}
+
+.smaller {
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.reveal .slide-logo {
+  max-height: 2em !important;
+}
+
